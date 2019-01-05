@@ -17,7 +17,7 @@
                   <v-card-actions>
                       <v-spacer></v-spacer>
                       <v-btn class="red white--text" >
-                          Register
+                          View
                       </v-btn>
                   </v-card-actions>
               </v-card>
