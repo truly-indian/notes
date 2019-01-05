@@ -10,13 +10,14 @@
        </v-layout>
        <v-layout row wrap class="mt-2">
            <v-flex xs12 >
-  <v-carousel>
+  <v-carousel style="cursor:pointer">
     <v-carousel-item
       v-for="note in notes"
       :key="note.id"
       :src="note.imgurl"
       reverse-transition="fade"
       transition="fade"
+      @click="onloadnote(note.id)"
     ></v-carousel-item>
        </v-carousel>
            </v-flex>
@@ -36,6 +37,11 @@ export default {
         {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', title: 'Notes in class'},
         {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class'}
       ]
+    }
+  },
+  methods: {
+    onloadnote (id) {
+      this.$router.push('/notes/' + id)
     }
   }
 }

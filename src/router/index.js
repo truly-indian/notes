@@ -6,6 +6,7 @@ import createnote from '@/components/notes/createnote'
 import profile from '@/components/user/profile'
 import signin from '@/components/user/signin'
 import signup from '@/components/user/signup'
+import note from '@/components/notes/note'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -23,6 +24,11 @@ export default new Router({
       path: '/notes/new',
       name: 'createnote',
       component: createnote
+    },
+    {
+      path: '/notes/:id',
+      name: 'note',
+      component: note
     },
     {
       path: '/signup',
