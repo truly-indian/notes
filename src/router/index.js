@@ -28,6 +28,7 @@ export default new Router({
     {
       path: '/notes/:id',
       name: 'note',
+      props: true,
       component: note
     },
     {

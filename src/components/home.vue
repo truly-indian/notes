@@ -31,12 +31,9 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      notes: [
-        {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', title: 'Notes in class'},
-        {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class'}
-      ]
+  computed: {
+    notes () {
+      return this.$store.getters.featurednotes
     }
   },
   methods: {
