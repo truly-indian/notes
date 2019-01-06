@@ -1,4 +1,4 @@
-# e-Notes
+# Snap_Shots
 
 > Notes at a Click
 
