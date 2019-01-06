@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
-export var store = new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     loadednotes: [
       {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', id: 'sdfas345', title: 'Notes in class', date: '27-09-2018'},
@@ -12,8 +12,24 @@ export var store = new Vuex.Store({
       registerednotes: ['dfas345']
     }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    createnote (state, payload) {
+      state.loadednotes.push(payload)
+    }
+  },
+  actions: {
+    createnote ({commit}, payload) {
+      const note = {
+        title: payload.title,
+        location: payload.location,
+        imgurl: payload.imgurl,
+        description: payload.description,
+        date: payload.date,
+        id: 'asfasd324'
+      }
+      commit('createnote', note)
+    }
+  },
   getters: {
     loadednotes (state) {
       return state.loadednotes.sort((noteA, noteB) => {
