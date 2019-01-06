@@ -1,7 +1,7 @@
 {
-  "name": "developer-meetup",
+  "name": "e-Notes",
   "version": "1.0.0",
-  "description": "a meetup organiszer website",
+  "description": "Notes at a click",
   "author": "Malik <deepakm661@gmail.com>",
   "private": true,
   "scripts": {
