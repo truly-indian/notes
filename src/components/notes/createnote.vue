@@ -41,6 +41,21 @@
                       </v-text-field>
                     </v-flex>
                 </v-layout>
+                <v-layout row class="mb-4">
+                  <v-flex xs12 sm6 offset-sm3>
+                      <h2>Choose Date and Time</h2>
+                   </v-flex>
+                </v-layout>
+                 <v-layout row class="mb-3">
+                  <v-flex xs12 sm6 offset-sm3>
+                      <v-date-picker color="red" v-model="date" ></v-date-picker>
+                   </v-flex>
+                </v-layout>
+                <v-layout row mb-2>
+                  <v-flex xs12 sm6 offset-sm3>
+                      <v-time-picker color="green" v-model="time" format="24hr"></v-time-picker>
+                   </v-flex>
+                </v-layout>
                 <v-layout row>
                     <v-flex xs12 sm6 offset-sm3>
                      <v-btn class="green" :disabled="!formisvalid" type="submit">
@@ -60,13 +75,28 @@ export default {
       title: '',
       location: '',
       imgurl: '',
-      description: ''
+      description: '',
+      date: '',
+      time: new Date()
     }
   },
   computed: {
     formisvalid () {
       return this.title !== '' && this.location !== '' && this.imgurl !== '' && this.description !== ''
     }
+  },
+  submitdateandtime () {
+    const date = new Date(this.date)
+    if (typeof this.time === 'string') {
+      const hours = this.time.match(/^(\d+)/)[1]
+      const minutes = this.time.match(/:(\d+)/)[1]
+      date.setHours(hours)
+      date.setMinutes(minutes)
+    } else {
+      date.setHours(this.time.getHours())
+      date.setMinutes(this.time.getMinutes())
+    }
+    return date
   },
   methods: {
     oncreatenote () {
@@ -78,7 +108,7 @@ export default {
         location: this.location,
         imgurl: this.imgurl,
         description: this.description,
-        date: new Date()
+        date: this.submitdateandtime
       }
       this.$store.dispatch('createnote', notedata)
       this.$router.push('/notes')

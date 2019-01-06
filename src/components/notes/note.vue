@@ -11,8 +11,8 @@
                     height="500px"
                   ></v-img>
                   <v-card-text>
-                      <div class="blue--text">{{note.date}}--the place where it was noted</div>
-                      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae nam modi beatae veniam voluptate laborum animi, soluta qui necessitatibus facere voluptates quas, quis totam. Facilis quidem architecto quam omnis soluta.</div>
+                      <div class="blue--text">{{note.date | date}} {{note.location}}</div>
+                      <div>{{note.description}}</div>
                   </v-card-text>
                   <v-card-actions>
                       <v-spacer></v-spacer>

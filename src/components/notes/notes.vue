@@ -15,7 +15,7 @@
                     <v-card-title primary-title>
                         <div>
                       <h1 mb-0 class="white--text">{{note.title}}</h1>
-                      <div>{{note.date}}</div>
+                      <div>{{note.date | date}}</div>
                       </div>
                   </v-card-title>
                   <v-card-actions>

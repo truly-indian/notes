@@ -4,8 +4,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     loadednotes: [
-      {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', id: 'sdfas345', title: 'Notes in class', date: '27-09-2018'},
-      {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class', date: '12-08-2016'}
+      {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', id: 'sdfas345', title: 'Notes in class', date: new Date(), location: 'GGSIPU', description: 'GURUGOBIND SINGH INDRAPRASTHA UNIVERSITY'},
+      {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class', date: new Date(), location: 'DTU', description: 'Delhi technical University'}
     ],
     user: {
       id: 'asdfkjhakjl132',
