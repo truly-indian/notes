@@ -1,6 +1,6 @@
-# developer-meetup
+# e-Notes
 
-> a meetup organiszer website
+> Notes at a Click
 
 ## Build Setup
 
