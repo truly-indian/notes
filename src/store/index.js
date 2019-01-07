@@ -8,7 +8,9 @@ export const store = new Vuex.Store({
       {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', id: 'sdfas345', title: 'Notes in class', date: new Date(), location: 'GGSIPU', description: 'GURUGOBIND SINGH INDRAPRASTHA UNIVERSITY'},
       {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class', date: new Date(), location: 'DTU', description: 'Delhi technical University'}
     ],
-    user: null
+    user: null,
+    loading: false,
+    error: null
   },
   mutations: {
     createnote (state, payload) {
@@ -16,6 +18,15 @@ export const store = new Vuex.Store({
     },
     setuser (state, payload) {
       state.user = payload
+    },
+    setloading (state, payload) {
+      state.loading = payload
+    },
+    seterror (state, payload) {
+      state.error = payload
+    },
+    clearerror (state) {
+      state.error = null
     }
   },
   actions: {
@@ -31,9 +42,12 @@ export const store = new Vuex.Store({
       commit('createnote', note)
     },
     signuserup ({commit}, payload) {
+      commit('setloading', true)
+      commit('clearerror')
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then(
           user => {
+            commit('setloading', false)
             const newuser = {
               id: user.uid,
               registerednotes: []
@@ -43,14 +57,22 @@ export const store = new Vuex.Store({
         )
         .catch(
           error => {
+            commit('setloading', false)
+            commit('seterror', error.message)
             console.log(error)
           }
         )
     },
+    clearerror ({commit}) {
+      commit('clearerror')
+    },
     signuserin ({commit}, payload) {
+      commit('setloading', true)
+      commit('clearerror')
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(
           user => {
+            commit('setloading', false)
             const newuser = {
               id: user.uid,
               registerednotes: []
@@ -60,6 +82,8 @@ export const store = new Vuex.Store({
         )
         .catch(
           error => {
+            commit('setloading', false)
+            commit('seterror', error.message)
             console.log(error)
           }
         )
@@ -83,6 +107,12 @@ export const store = new Vuex.Store({
     },
     user (state) {
       return state.user
+    },
+    error (state) {
+      return state.error
+    },
+    loading (state) {
+      return state.loading
     }
   }
 })
