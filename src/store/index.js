@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as firebase from 'firebase'
 Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
@@ -7,14 +8,14 @@ export const store = new Vuex.Store({
       {imgurl: 'https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/09/Notes-handwriting-mockuuup_0.jpeg?itok=PVL1ofMT', id: 'sdfas345', title: 'Notes in class', date: new Date(), location: 'GGSIPU', description: 'GURUGOBIND SINGH INDRAPRASTHA UNIVERSITY'},
       {imgurl: 'https://images.techhive.com/images/article/2014/07/notes-icon-100358271-large.jpg', id: 'dsfasrtf123dfs', title: 'Notes in class', date: new Date(), location: 'DTU', description: 'Delhi technical University'}
     ],
-    user: {
-      id: 'asdfkjhakjl132',
-      registerednotes: ['dfas345']
-    }
+    user: null
   },
   mutations: {
     createnote (state, payload) {
       state.loadednotes.push(payload)
+    },
+    setuser (state, payload) {
+      state.user = payload
     }
   },
   actions: {
@@ -28,6 +29,23 @@ export const store = new Vuex.Store({
         id: 'asfasd324'
       }
       commit('createnote', note)
+    },
+    signuserup ({commit}, payload) {
+      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+        .then(
+          user => {
+            const newuser = {
+              id: user.uid,
+              registerednotes: []
+            }
+            commit('setuser', newuser)
+          }
+        )
+        .catch(
+          error => {
+            console.log(error)
+          }
+        )
     }
   },
   getters: {
@@ -45,6 +63,9 @@ export const store = new Vuex.Store({
           return note.id === noteid
         })
       }
+    },
+    user (state) {
+      return state.user
     }
   }
 })

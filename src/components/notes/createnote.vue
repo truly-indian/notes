@@ -10,14 +10,14 @@
             <v-form @submit.prevent="oncreatenote">
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="title" label="Title" id="title" :rules="rules" counter maxlength="20" hint="max length is 20" v-model="title">
+                      <v-text-field name="title" label="Title" id="title"  v-model="title">
 
                       </v-text-field>
                     </v-flex>
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="location" label="Location" id="location" :rules="rules" counter maxlength="10" hint="max length is 10" v-model="location">
+                      <v-text-field name="location" label="Location" id="location" v-model="location">
 
                       </v-text-field>
                     </v-flex>
@@ -36,7 +36,7 @@
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="description" label="Description" id="description" hint="add as much as you want :)" multi-line v-model="description">
+                      <v-text-field name="description" label="Description" id="description" multi-line v-model="description">
 
                       </v-text-field>
                     </v-flex>
