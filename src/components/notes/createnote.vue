@@ -10,23 +10,23 @@
             <v-form @submit.prevent="oncreatenote">
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="title" label="Title" id="title"  v-model="title">
+                      <v-textarea name="title" label="Title" id="title"  v-model="title">
 
-                      </v-text-field>
+                      </v-textarea>
                     </v-flex>
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="location" label="Location" id="location" v-model="location">
+                      <v-textarea name="location" label="Location" id="location" v-model="location">
 
-                      </v-text-field>
+                      </v-textarea>
                     </v-flex>
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="imgurl" label="Image Url" id="img-url" v-model="imgurl">
+                      <v-textarea name="imgurl" label="Image Url" id="img-url" v-model="imgurl">
 
-                      </v-text-field>
+                      </v-textarea>
                     </v-flex>
                 </v-layout>
                  <v-layout row>
@@ -36,9 +36,9 @@
                 </v-layout>
                 <v-layout row>
                     <v-flex xs12 offset-sm3>
-                      <v-text-field name="description" label="Description" id="description" multi-line v-model="description">
+                      <v-textarea name="description" label="Description" id="description" multi-line v-model="description">
 
-                      </v-text-field>
+                      </v-textarea>
                     </v-flex>
                 </v-layout>
                 <v-layout row class="mb-4">

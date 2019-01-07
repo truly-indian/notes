@@ -36,9 +36,16 @@ export const store = new Vuex.Store({
         location: payload.location,
         imgurl: payload.imgurl,
         description: payload.description,
-        date: payload.date,
-        id: 'asfasd324'
+        date: payload.date.toISOSString()
       }
+      firebase.database().ref('notes').push(note)
+        .then((data) => {
+          console.log(data)
+          commit('createnote', note)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       commit('createnote', note)
     },
     signuserup ({commit}, payload) {
@@ -64,7 +71,7 @@ export const store = new Vuex.Store({
         )
     },
     clearerror ({commit}) {
-      commit('clearerror')
+      commit()
     },
     signuserin ({commit}, payload) {
       commit('setloading', true)
@@ -108,11 +115,11 @@ export const store = new Vuex.Store({
     user (state) {
       return state.user
     },
-    error (state) {
-      return state.error
-    },
     loading (state) {
       return state.loading
+    },
+    error (state) {
+      return state.error
     }
   }
 })

@@ -10,7 +10,7 @@
            <v-card>
                <v-card-text>
                    <v-container>
-                       <v-from>
+                       <v-form>
                            <v-layout row>
                                <v-flex xs12>
                                  <v-text-field name="email" label="Email" id="email" v-model="email" type="email" required>
@@ -35,7 +35,7 @@
                                    </v-btn>
                                </v-flex>
                            </v-layout>
-                       </v-from>
+                       </v-form>
                    </v-container>
                </v-card-text>
            </v-card>
