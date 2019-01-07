@@ -26,14 +26,26 @@ export default {
   name: 'App',
   data () {
     return {
-      sidenav: false,
-      menuitems: [
-        {icon: 'import_contacts', title: 'ViewNotes', link: '/notes'},
-        {icon: 'cloud_queue', title: 'Write', link: '/notes/new'},
-        {icon: 'person', title: 'Profile', link: '/profile'},
+      sidenav: false
+    }
+  },
+  computed: {
+    menuitems () {
+      let menuitems = [
         {icon: 'face', title: 'signup', link: '/signup'},
         {icon: 'lock_open', title: 'signin', link: '/signin'}
       ]
+      if (this.userauth) {
+        menuitems = [
+          {icon: 'import_contacts', title: 'ViewNotes', link: '/notes'},
+          {icon: 'cloud_queue', title: 'Write', link: '/notes/new'},
+          {icon: 'person', title: 'Profile', link: '/profile'}
+        ]
+      }
+      return menuitems
+    },
+    userauth () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   }
 }
